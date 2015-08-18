@@ -2,16 +2,24 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <option name="incrementalityType" value="SBT" />
-    <profile name="SBT 1" modules="stempelstriber-dk,sharedJVM" />
-    <profile name="SBT 2" modules="backend">
+    <profile name="SBT 4" modules="stempelstriber-dk,sharedJVM">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+    </profile>
+    <profile name="SBT 4" modules="backend">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
       <parameters>
         <parameter value="-encoding" />
         <parameter value="utf8" />
       </parameters>
     </profile>
-    <profile name="SBT 3" modules="frontend,sharedJS">
+    <profile name="SBT 5" modules="frontend,sharedJS">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
       <parameters>
         <parameter value="-P:scalajs:mapSourceURI:file:/home/thomas/src/github.com/homburg/stempelstriber.dk/-&gt;" />
       </parameters>
