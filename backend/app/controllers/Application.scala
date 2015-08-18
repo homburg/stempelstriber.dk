@@ -8,4 +8,8 @@ object Application extends Controller {
   def index = Action {
     Ok(Home.text)
   }
+
+  def view = Action {
+    Ok(views.html.index(SharedMessages.itWorks))
+  }
 }
