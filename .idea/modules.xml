@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend.iml" filepath="$PROJECT_DIR$/.idea/modules/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend-build.iml" filepath="$PROJECT_DIR$/.idea/modules/backend-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend-build.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sharedJS.iml" filepath="$PROJECT_DIR$/.idea/modules/sharedJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sharedJS-build.iml" filepath="$PROJECT_DIR$/.idea/modules/sharedJS-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sharedJVM.iml" filepath="$PROJECT_DIR$/.idea/modules/sharedJVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sharedJVM-build.iml" filepath="$PROJECT_DIR$/.idea/modules/sharedJVM-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stempelstriber-dk.iml" filepath="$PROJECT_DIR$/.idea/modules/stempelstriber-dk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stempelstriber-dk-build.iml" filepath="$PROJECT_DIR$/.idea/modules/stempelstriber-dk-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stempelstriber.dk-sources.iml" filepath="$PROJECT_DIR$/.idea/modules/stempelstriber.dk-sources.iml" />
+    </modules>
+  </component>
+</project>
