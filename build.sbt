@@ -1,9 +1,9 @@
 import sbt.Project.projectToRef
 
-lazy val clients = Seq(exampleClient)
+lazy val clients = Seq(frontend)
 lazy val scalaV = "2.11.7"
 
-lazy val exampleServer = (project in file("example-server")).settings(
+lazy val backend = (project in file("backend")).settings(
   scalaVersion := scalaV,
   scalaJSProjects := clients,
   pipelineStages := Seq(scalaJSProd, gzip),
@@ -20,30 +20,30 @@ lazy val exampleServer = (project in file("example-server")).settings(
   herokuSkipSubProjects in Compile := false
 ).enablePlugins(PlayScala).
   aggregate(clients.map(projectToRef): _*).
-  dependsOn(exampleSharedJvm)
+  dependsOn(sharedJvm)
 
-lazy val exampleClient = (project in file("example-client")).settings(
+lazy val frontend = (project in file("frontend")).settings(
   scalaVersion := scalaV,
   persistLauncher := true,
   persistLauncher in Test := false,
-  sourceMapsDirectories += exampleSharedJs.base / "..",
+  sourceMapsDirectories += sharedJs.base / "..",
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.8.0",
     "com.lihaoyi" %%% "scalatags" % "0.5.2"
   )
 ).enablePlugins(ScalaJSPlugin, ScalaJSPlay).
-  dependsOn(exampleSharedJs)
+  dependsOn(sharedJs)
 
-lazy val exampleShared = (crossProject.crossType(CrossType.Pure) in file("example-shared")).
+lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
   settings(scalaVersion := scalaV).
   jsConfigure(_ enablePlugins ScalaJSPlay).
   jsSettings(sourceMapsBase := baseDirectory.value / "..")
 
-lazy val exampleSharedJvm = exampleShared.jvm
-lazy val exampleSharedJs = exampleShared.js
+lazy val sharedJvm = shared.jvm
+lazy val sharedJs = shared.js
 
 // loads the Play project at sbt startup
-onLoad in Global := (Command.process("project exampleServer", _: State)) compose (onLoad in Global).value
+onLoad in Global := (Command.process("project backend", _: State)) compose (onLoad in Global).value
 
 // for Eclipse users
 EclipseKeys.skipParents in ThisBuild := false

@@ -4,13 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backend/app/app.iml" filepath="$PROJECT_DIR$/backend/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example-client/src/main/frontend.iml" filepath="$PROJECT_DIR$/example-client/src/main/frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/target/web/public/main/example-client/src/main/main1.iml" filepath="$PROJECT_DIR$/backend/target/web/public/main/example-client/src/main/main1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/target/web/public/main/example-shared/src/main/main3.iml" filepath="$PROJECT_DIR$/backend/target/web/public/main/example-shared/src/main/main3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/target/scala-2.11/routes/routes.iml" filepath="$PROJECT_DIR$/backend/target/scala-2.11/routes/routes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/target/scala-2.11/scala-2.11.iml" filepath="$PROJECT_DIR$/backend/target/scala-2.11/scala-2.11.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example-shared/src/main/shared.iml" filepath="$PROJECT_DIR$/example-shared/src/main/shared.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/target/scala-2.11/twirl/twirl.iml" filepath="$PROJECT_DIR$/backend/target/scala-2.11/twirl/twirl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/src/main/frontend.iml" filepath="$PROJECT_DIR$/frontend/src/main/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shared/src/main/shared.iml" filepath="$PROJECT_DIR$/shared/src/main/shared.iml" />
     </modules>
   </component>
 </project>
