@@ -5,9 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index
 
-GET     /view                           controllers.Application.view
+GET     /view*path                           controllers.Application.view(path: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET 	/webjars/*file				controllers.WebJarAssets.at(file)
+
+POST 	/upload						controllers.Application.upload

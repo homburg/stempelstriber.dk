@@ -12,6 +12,7 @@ lazy val backend = (project in file("backend")).settings(
     "com.vmunier" %% "play-scalajs-scripts" % "0.3.0",
     "org.webjars" %% "webjars-play" % "2.4.0-1",
     "org.webjars" % "bootstrap" % "3.3.5",
+    ws,
     specs2 % Test,
     "com.lihaoyi" %% "scalatags" % "0.5.2"
   ),
