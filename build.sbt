@@ -14,7 +14,8 @@ lazy val backend = (project in file("backend")).settings(
     "org.webjars" % "bootstrap" % "3.3.5",
     ws,
     specs2 % Test,
-    "com.lihaoyi" %% "scalatags" % "0.5.2"
+    "com.lihaoyi" %% "scalatags" % "0.5.2",
+    "com.github.seratch" %% "awscala" % "0.5.+"
   ),
   // Heroku specific
   herokuAppName in Compile := "your-heroku-app-name",

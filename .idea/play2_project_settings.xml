@@ -6,6 +6,7 @@
         <entry key="backend">
           <value>
             <ProjectSettingsEntry>
+              <option name="sourceDir" value="$PROJECT_DIR$/src/main" />
               <option name="confDir" value="$PROJECT_DIR$/src/main" />
               <option name="uri" value="$PROJECT_DIR$" />
             </ProjectSettingsEntry>
