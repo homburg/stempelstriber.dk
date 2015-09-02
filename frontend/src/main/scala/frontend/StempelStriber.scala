@@ -6,6 +6,7 @@ import shared.SharedMessages
 
 object StempelStriber extends js.JSApp {
   def main(): Unit = {
-    println(SharedMessages.itWorks)
+    // println(SharedMessages.itWorks)
+    // println(js.Date())
   }
 }

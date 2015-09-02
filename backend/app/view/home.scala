@@ -10,6 +10,7 @@ import scalatags.Text.TypedTag
 import scalatags.Text.all.{`class` => c, _}
 import scalatags.generic.Modifier
 import scalatags.text.Builder
+import shared.Data.Comic
 
 object Home {
 
@@ -63,6 +64,17 @@ object Home {
     )
   )
 
+  def comic(c: Comic): Html = document(
+    container(
+      row(
+        colMd(12)(
+          img(src:=c.comic, style:="display:block;width:100%; padding: 0px; margin: 10px; margin-bottom: 0px;"),
+          c.tests.map(url => img(src:=url, style:="display: inline-block; width: 250px;padding: 0px; margin: 10px;"))
+        )
+      )
+    )
+  )
+
   def files(fileList: Seq[String]): Html = {
     document(container(row(colMd(12)(
       h1("Files"),
@@ -79,7 +91,7 @@ object Home {
         head(
           link(
             rel := "stylesheet",
-            href := routes.Assets.at("lib/bootstrap/css/bootstrap.min.css")
+            href := routes.Assets.at(path="/public", "lib/bootstrap/css/bootstrap.min.css")
           )
         ),
         body(children)

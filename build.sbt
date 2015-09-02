@@ -15,7 +15,10 @@ lazy val backend = (project in file("backend")).settings(
     ws,
     specs2 % Test,
     "com.lihaoyi" %% "scalatags" % "0.5.2",
-    "com.github.seratch" %% "awscala" % "0.5.+"
+    "com.github.seratch" %% "awscala" % "0.5.+",
+    "com.lihaoyi" %% "upickle" % "0.3.6",
+    "com.lihaoyi" %% "pprint" % "0.3.6",
+    "com.github.nscala-time" %% "nscala-time" % "2.2.0"
   ),
   // Heroku specific
   herokuAppName in Compile := "your-heroku-app-name",
@@ -31,7 +34,9 @@ lazy val frontend = (project in file("frontend")).settings(
   sourceMapsDirectories += sharedJs.base / "..",
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.8.0",
-    "com.lihaoyi" %%% "scalatags" % "0.5.2"
+    "com.lihaoyi" %%% "scalatags" % "0.5.2",
+    "com.lihaoyi" %%% "upickle" % "0.3.6",
+    "com.lihaoyi" %%% "pprint" % "0.3.6"
   ),
   jsDependencies := Seq(
     // "org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React"

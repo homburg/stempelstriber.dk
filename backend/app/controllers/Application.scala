@@ -7,13 +7,24 @@ import play.api.libs.MimeTypes
 import play.api.libs.iteratee.Enumerator
 import play.api.libs.ws._
 import play.api.mvc._
-import services.Files
+import services.{Files, Comic}
+import sys.env
+import upickle.default.read
+import pprint.Config.Defaults._
+import shared.Data
 
 object Application extends Controller {
   implicit val context = scala.concurrent.ExecutionContext.Implicits.global
 
   def index = Action {
     Ok(Home.text)
+  }
+
+  def c(id: Int) = Action {
+    Comic.byId(id) match {
+      case Some(comic) => Ok(Home.comic(comic)).withHeaders(CONTENT_TYPE -> HTML)
+      case None => NotFound
+    }
   }
 
   def file(path: String) = Action {
@@ -112,5 +123,9 @@ object Application extends Controller {
             NotFound
           }
       }
+  }
+
+  def comics = Action {
+    Ok(pprint.tokenize(Comic.comics).mkString)
   }
 }
