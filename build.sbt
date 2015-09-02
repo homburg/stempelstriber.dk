@@ -11,14 +11,12 @@ lazy val backend = (project in file("backend")).settings(
   libraryDependencies ++= Seq(
     "com.vmunier" %% "play-scalajs-scripts" % "0.3.0",
     "org.webjars" %% "webjars-play" % "2.4.0-1",
-    "org.webjars" % "bootstrap" % "3.3.5",
     ws,
     specs2 % Test,
     "com.lihaoyi" %% "scalatags" % "0.5.2",
-    "com.github.seratch" %% "awscala" % "0.5.+",
     "com.lihaoyi" %% "upickle" % "0.3.6",
     "com.lihaoyi" %% "pprint" % "0.3.6",
-    "com.github.nscala-time" %% "nscala-time" % "2.2.0"
+    "com.github.japgolly.scalacss" %% "core" % "0.3.0"
   ),
   // Heroku specific
   herokuAppName in Compile := "your-heroku-app-name",
@@ -39,8 +37,8 @@ lazy val frontend = (project in file("frontend")).settings(
     "com.lihaoyi" %%% "pprint" % "0.3.6"
   ),
   jsDependencies := Seq(
-    // "org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React"
-    "org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React"
+    "org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
+    "org.webjars" % "jquery" % "2.1.4" / "jquery/2.1.4/jquery.js" minified "jquery/2.1.4/jquery.min.js" commonJSName "jQuery"
   )
 ).enablePlugins(ScalaJSPlugin, ScalaJSPlay).
   dependsOn(sharedJs)

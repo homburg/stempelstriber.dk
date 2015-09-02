@@ -1,14 +1,11 @@
 package controllers
 
-import awscala.s3.S3ObjectSummary
 import home.Home
 import play.api.Play.current
 import play.api.libs.MimeTypes
-import play.api.libs.iteratee.Enumerator
 import play.api.libs.ws._
 import play.api.mvc._
 import services.Comic
-import sys.env
 import upickle.default.read
 import pprint.Config.Defaults._
 import shared.Data
