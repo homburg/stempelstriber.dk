@@ -63,4 +63,17 @@ object Style extends StyleSheet.Inline {
   val fullWidth = style(
     width(100.%%)
   )
+
+  object navigation {
+    val self = style(
+      width(contentWidth),
+      margin(0.px, auto),
+      display.flex,
+      justifyContent.spaceAround
+    )
+
+    val left = style()
+
+    val right = style()
+  }
 }

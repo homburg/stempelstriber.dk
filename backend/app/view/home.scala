@@ -38,7 +38,7 @@ object Home {
     def submit(children: Modifier[Builder]*) = input(`type` := "submit", children)
   }
 
-  def comic(comic: Comic): Html = document(
+  def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = document(
     div(
       c:=Style.container.htmlClass,
       div(
@@ -53,6 +53,14 @@ object Home {
         c:=Style.rightColumn.htmlClass,
         img(src:=comic.comic, c:=Style.fullWidth.htmlClass)
       )
+    ),
+    div(c:=Style.navigation.self.htmlClass,
+      prev.map { prevComic =>
+        a(c:=Style.navigation.left.htmlClass, href:=routes.Application.c(prevComic.id), img(src:=routes.Assets.at("images/pil-left.png")))
+      },
+      next.map { nextComic =>
+        a(c:=Style.navigation.right.htmlClass, href:=routes.Application.c(nextComic.id), img(src:=routes.Assets.at("images/pil-right.png")))
+      }
     )
   )
 

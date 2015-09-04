@@ -19,8 +19,12 @@ object Application extends Controller {
   }
 
   def c(id: Int) = Action {
-    Comic.byId(id) match {
-      case Some(comic) => Ok(Home.comic(comic)).withHeaders(CONTENT_TYPE -> HTML)
+    val comicOption = Comic.byId(id)
+    val siblings = Comic.siblings(comicOption)
+    comicOption match {
+      case Some(comic) => {
+        Ok(Home.comic(comic, siblings._1, siblings._2)).withHeaders(CONTENT_TYPE -> HTML)
+      }
       case None => NotFound
     }
   }

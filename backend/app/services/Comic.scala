@@ -11,6 +11,15 @@ object Comic {
     }
 
     def byId(id: Int): Option[Data.Comic] = comics.get(id)
+    def siblings(comic: Option[Data.Comic]): Tuple2[Option[Data.Comic], Option[Data.Comic]]  = comic match {
+      case Some(c) => {
+        val cs = comics.values.toVector
+        val index = cs.indexOf(c)
+        val csl = cs.lift
+        (csl(index-1), csl(index+1))
+      }
+      case None => (None, None)
+    }
 
     val data = """[
         {
