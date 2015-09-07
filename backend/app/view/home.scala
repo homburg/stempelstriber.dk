@@ -10,6 +10,7 @@ import scalatags.Text.tags2.{title => headTitle, style => headStyle}
 import scalatags.generic.Modifier
 import shared.Data.Comic
 import scalacss.Defaults._
+import services.ImageProxy.{width => imageWidth}
 
 
 object Home {
@@ -45,21 +46,21 @@ object Home {
         c:=Style.leftColumn.htmlClass,
         comic.tests.map { url =>
           a(href:=url, c:="imagelightbox",
-            img(src:=url, c:=Style.fullWidth.htmlClass)
+            img(src:=imageWidth(71, url), c:=Style.fullWidth.htmlClass)
           )
         }
       ),
       div(
         c:=Style.rightColumn.htmlClass,
-        img(src:=comic.comic, c:=Style.fullWidth.htmlClass)
+        img(src:=imageWidth(637, comic.comic), c:=Style.fullWidth.htmlClass)
       )
     ),
     div(c:=Style.navigation.self.htmlClass,
       prev.map { prevComic =>
-        a(c:=Style.navigation.left.htmlClass, href:=routes.Application.c(prevComic.id), img(src:=routes.Assets.at("images/pil-left.png")))
+        a(c:=Style.navigation.left.htmlClass, href:=routes.Application.c(prevComic.id), img(src:=routes.Assets.at("images/pil-left.png"), rel:="prerender"))
       },
       next.map { nextComic =>
-        a(c:=Style.navigation.right.htmlClass, href:=routes.Application.c(nextComic.id), img(src:=routes.Assets.at("images/pil-right.png")))
+        a(c:=Style.navigation.right.htmlClass, href:=routes.Application.c(nextComic.id), img(src:=routes.Assets.at("images/pil-right.png"), rel:="prerender"))
       }
     )
   )
