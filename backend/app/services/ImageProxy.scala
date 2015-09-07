@@ -1,5 +1,8 @@
 package services
 
+import sys.env
+
 object ImageProxy {
-  def width(width: Int, url: String) = s"http://image.c.homburg.dk/$width/$url"
+  private lazy val baseUrl = env("IMAGE_PROXY_HOST")
+  def width(width: Int, url: String) = s"http://$baseUrl/$width/$url"
 }
