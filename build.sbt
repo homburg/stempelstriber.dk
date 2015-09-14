@@ -7,7 +7,10 @@ lazy val backend = (project in file("backend")).settings(
   scalaVersion := scalaV,
   scalaJSProjects := clients,
   pipelineStages := Seq(scalaJSProd, gzip),
-  resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
+  resolvers ++= Seq(
+    "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
+    "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+  ),
   libraryDependencies ++= Seq(
     "com.vmunier" %% "play-scalajs-scripts" % "0.3.0",
     "org.webjars" %% "webjars-play" % "2.4.0-1",
@@ -16,7 +19,8 @@ lazy val backend = (project in file("backend")).settings(
     "com.lihaoyi" %% "scalatags" % "0.5.2",
     "com.lihaoyi" %% "upickle" % "0.3.6",
     "com.lihaoyi" %% "pprint" % "0.3.6",
-    "com.github.japgolly.scalacss" %% "core" % "0.3.0"
+    "com.github.japgolly.scalacss" %% "core" % "0.3.0",
+    "com.google.identitytoolkit" % "gitkitclient" % "1.2.3"
   ),
   // Heroku specific
   herokuAppName in Compile := "your-heroku-app-name",

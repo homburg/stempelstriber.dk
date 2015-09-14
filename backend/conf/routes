@@ -11,3 +11,10 @@ GET 		/webjars/*file        controllers.WebJarAssets.at(file)
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
  
 GET /c/:id controllers.Application.c(id: Int)
+
+GET /session/sign-in controllers.Session.signIn()
+
+GET /oauth/callback controllers.Session.widget()
+
+GET /oauth/success controllers.Session.success()
+
