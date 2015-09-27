@@ -13,8 +13,14 @@ GET         /assets/*file         controllers.Assets.at(path="/public", file)
 GET /c/:id controllers.Application.c(id: Int)
 
 GET /session/sign-in controllers.Session.signIn()
+GET /login controllers.Session.signIn()
 
 GET /oauth/callback controllers.Session.widget()
 
+GET /oauth/sign-out controllers.Application.index()
+
 GET /oauth/success controllers.Session.success()
+
+GET /test/db	controllers.Application.testDb()
+GET /test/setup-db	controllers.Application.setupDb()
 

@@ -1,25 +1,32 @@
 package home
 
 import controllers.routes
-import scalatags.text.Builder
-import play.twirl.api.{Html, HtmlFormat}
+import play.twirl.api.Html
 import playscalajs.html.{scripts => scalaJsScripts}
-
-import scalatags.Text.all.{`class` => c, _}
-import scalatags.Text.tags2.{title => headTitle, style => headStyle}
-import scalatags.generic.Modifier
-import shared.Data.Comic
-import scalacss.Defaults._
 import services.ImageProxy.{width => imageWidth}
+import shared.Data.Comic
+
+import scalacss.Defaults._
+import scalacss.ScalatagsCss._
+import scalatags.Text._
+import scalatags.Text.all.{`class` => c}
+import scalatags.Text.all._
+import scalatags.Text.tags2.{style => headStyle, title => headTitle}
+import scalatags.generic.Modifier
+import scalatags.text.Builder
 
 
 object Home {
   import Implicits._
 
-  lazy val headCss = Head.render
-  lazy val inlineHeadCss = Style.render
+  def Test() = {
+    val c = container(row(colMd(12)(h1("Test"))))
+    Html(c)
+  }
 
-  def container(children: Modifier[Builder]*) = div(c := "container", children)
+  def container(children: Modifier[Builder]*) = {
+    div(c := "container", children)
+  }
 
   def row(children: Modifier[Builder]*) = div(c := "row", children)
 
@@ -89,39 +96,39 @@ object Home {
     )
   )
 
-  def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = document(
-    div(
-      c:=Style.container.htmlClass,
-      div(
-        c:=Style.leftColumn.htmlClass,
-        comic.tests.map { url =>
-          a(href:=url, c:="imagelightbox",
-            img(src:=imageWidth(71, url), c:=Style.fullWidth.htmlClass)
-          )
-        }
-      ),
-      div(
-        c:=Style.rightColumn.htmlClass,
-        img(src:=imageWidth(637, comic.comic), c:=Style.fullWidth.htmlClass)
-      )
-    ),
-    div(c:=Style.navigation.self.htmlClass,
-      prev.map { prevComic =>
-        a(c:=Style.navigation.left.htmlClass, href:=routes.Application.c(prevComic.id), img(src:=routes.Assets.at("images/pil-left.png"), rel:="prerender"))
-      },
-      next.map { nextComic =>
-        a(c:=Style.navigation.right.htmlClass, href:=routes.Application.c(nextComic.id), img(src:=routes.Assets.at("images/pil-right.png"), rel:="prerender"))
-      }
+  def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
+    val navigation: TypedTag[String] = div(Style.navigation.self
+      , div(Style.navigation.left, prev.map { prevComic =>
+        a(href := routes.Application.c(prevComic.id), img(src := routes.Assets.at("images/pil-left.png"), rel := "prerender"))
+      })
+      , div(Style.navigation.right, next.map { nextComic =>
+        a(href := routes.Application.c(nextComic.id), img(src := routes.Assets.at("images/pil-right.png"), rel := "prerender"))
+      })
     )
-  )
+
+    document(
+      div(Style.container
+        , div(
+          Style.leftColumn.self,
+          comic.tests.map { url =>
+            a(href:=url, c:="imagelightbox ", img(src:=imageWidth(71, url), Style.leftColumn.link))
+          }
+        )
+        , div(Style.rightColumn
+          , img(src:=imageWidth(637, comic.comic), Style.fullWidth)
+          , navigation
+        )
+      )
+    )
+  }
 
   def document(children: Modifier[Builder]*): Html = {
     Html(
       html(
         head(
           headTitle("stempelstriber.dk"),
-          headStyle(`type`:="text/css", headCss),
-          headStyle(`type`:="text/css", inlineHeadCss),
+          Head.render[TypedTag[String]],
+          Style.render[TypedTag[String]],
           headStyle(`type`:="text/css", """
             #imagelightbox-overlay {
               -webkit-animation: fade-in .25s linear;

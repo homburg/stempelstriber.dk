@@ -36,6 +36,13 @@ object Style extends StyleSheet.Inline {
 
   private val contentWidth = 708.px
 
+  val noSelect = style(
+    userSelect:="none",
+    color.red,
+    backgroundColor(rgba(255, 255, 255, 0.9))
+  )
+  
+
   val container = style(
     display.flex,
     justifyContent.spaceBetween,
@@ -48,15 +55,19 @@ object Style extends StyleSheet.Inline {
     )
   )
 
-  val leftColumn = style(
-    width(10.%%),
-    display.flex,
-    flexDirection.column,
-    marginTop(32.px),
-    cursor.pointer
-  )
+  object leftColumn {
+    val self = style(width(10.%%)
+      , display.flex
+      , flexDirection.column
+      , marginTop(32.px)
+    )
 
-  val rightColumn = style(
+    val link = style(cursor.pointer
+      , fullWidth
+    )
+  }
+
+val rightColumn = style(
     width(90.%%)
   )
   
@@ -65,15 +76,16 @@ object Style extends StyleSheet.Inline {
   )
 
   object navigation {
-    val self = style(
-      width(contentWidth),
-      margin(0.px, auto),
-      display.flex,
-      justifyContent.spaceAround
+    val self = style(margin(7.px, auto)
+      , display.flex
+      , justifyContent.spaceAround
     )
 
-    val left = style()
+    val left = style(noSelect
+      , textAlign.center
+      , width(50.%%)
+    )
 
-    val right = style()
+    val right = left
   }
 }
