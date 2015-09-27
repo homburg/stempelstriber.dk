@@ -7,7 +7,7 @@
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
     </profile>
-    <profile name="SBT 5" modules="frontend,sharedJS">
+    <profile name="SBT 4" modules="frontend,sharedJS">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
@@ -15,7 +15,7 @@
         <parameter value="-P:scalajs:mapSourceURI:file:/home/thomas/src/github.com/homburg/stempelstriber.dk/-&gt;" />
       </parameters>
       <plugins>
-        <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.11.7/jars/scalajs-compiler_2.11.7-0.6.4.jar" />
+        <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.11.7/jars/scalajs-compiler_2.11.7-0.6.5.jar" />
       </plugins>
     </profile>
     <profile name="SBT 3" modules="backend">
