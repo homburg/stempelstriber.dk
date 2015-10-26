@@ -97,26 +97,35 @@ object Home {
   )
 
   def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
-    val navigation: TypedTag[String] = div(Style.navigation.self
-      , div(Style.navigation.left, prev.map { prevComic =>
-        a(href := routes.Application.c(prevComic.id), img(src := routes.Assets.at("images/pil-left.png"), rel := "prerender"))
-      })
-      , div(Style.navigation.right, next.map { nextComic =>
-        a(href := routes.Application.c(nextComic.id), img(src := routes.Assets.at("images/pil-right.png"), rel := "prerender"))
-      })
-    )
+    // val navigation: TypedTag[String] = div(Style.navigation.self
+    //   , div(Style.navigation.left, )
+    //   , div(Style.navigation.right, )
+    // )
+
+    val testElements = comic.tests.map { url =>
+      a(href:=url, c:="imagelightbox ", img(src:=imageWidth(112, url)))
+    }
 
     document(
       div(Style.container
-        , div(
-          Style.leftColumn.self,
-          comic.tests.map { url =>
-            a(href:=url, c:="imagelightbox ", img(src:=imageWidth(71, url), Style.leftColumn.link))
+        , div(Style.outerColumns.left
+          , prev.map { prevComic =>
+            a(href := routes.Application.c(prevComic.id), img(src := routes.Assets.at("images/pil-venstre.png"), rel := "prerender", Style.fullWidth))
           }
         )
-        , div(Style.rightColumn
+        , div(Style.centerColumn
+          , a(Style.havhestenLink.self
+            , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
+            , href := "https://theismadsen.dk"
+          )
           , img(src:=imageWidth(637, comic.comic), Style.fullWidth)
-          , navigation
+          , div(Style.align.right, img(src := routes.Assets.at("images/tests-title.png")))
+          , div(Style.align.right, testElements)
+        )
+        , div(Style.outerColumns.right
+          , next.map { nextComic =>
+            a(href := routes.Application.c(nextComic.id), img(src := routes.Assets.at("images/pil-hoejre.png"), rel := "prerender", Style.fullWidth))
+          }
         )
       )
     )

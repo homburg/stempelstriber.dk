@@ -18,7 +18,7 @@ object Head extends StyleSheet.Standalone {
   )
 
   "#imagelightbox-overlay" - (
-    backgroundColor(rgba( 255, 255, 255, 0.9 )),
+    backgroundColor(rgba( 0, 0, 0, 0.6 )),
     position.fixed,
     zIndex(9998),
     top(0.px),
@@ -31,10 +31,17 @@ object Head extends StyleSheet.Standalone {
 object Style extends StyleSheet.Inline {
   import dsl._
 
-  val body = style(
-  )
+  val body = style()
 
-  private val contentWidth = 708.px
+  private val contentWidth = (637 * 100 / (100 - 14) + 1).px
+
+  object align {
+    val right = style(display.flex
+      , flexDirection.row
+      , justifyContent.flexEnd
+      , flexWrap.wrap
+    )
+  }
 
   val noSelect = style(
     userSelect:="none",
@@ -43,11 +50,10 @@ object Style extends StyleSheet.Inline {
   )
   
 
-  val container = style(
-    display.flex,
-    justifyContent.spaceBetween,
+  val container = style(display.flex
+    , justifyContent.spaceBetween,
     width(contentWidth),
-    margin(0.px, auto),
+    margin(7.px, auto),
 
     media.maxWidth(contentWidth)(
       width(100.%%)
@@ -55,37 +61,36 @@ object Style extends StyleSheet.Inline {
     )
   )
 
-  object leftColumn {
-    val self = style(width(10.%%)
+  object outerColumns {
+    val both = style(width(7.%%)
       , display.flex
-      , flexDirection.column
-      , marginTop(32.px)
+      , alignItems.center
+      , justifyContent.center
     )
+
+    val left = style(both)
+
+    val right = style(both)
 
     val link = style(cursor.pointer
       , fullWidth
     )
   }
 
-val rightColumn = style(
-    width(90.%%)
+  val centerColumn = style(position.relative
+    , width((100 - 14).%%)
   )
+
+  object havhestenLink {
+    val self = style(position.absolute
+      , width(7.%%)
+      , right(`0`)
+    )
+
+    val img = style(width(52.%%))
+  }
   
   val fullWidth = style(
     width(100.%%)
   )
-
-  object navigation {
-    val self = style(margin(7.px, auto)
-      , display.flex
-      , justifyContent.spaceAround
-    )
-
-    val left = style(noSelect
-      , textAlign.center
-      , width(50.%%)
-    )
-
-    val right = left
-  }
 }
