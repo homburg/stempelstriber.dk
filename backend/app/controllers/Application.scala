@@ -10,7 +10,7 @@ object Application extends Controller {
 
   def testDb = Action.async { r =>
     User.doNames map {
-      case strs => Ok(strs.mkString(", "))
+      case strs => Ok(strs.toString)
     }
   }
 

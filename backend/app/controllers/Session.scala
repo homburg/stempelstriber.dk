@@ -1,10 +1,10 @@
 package controllers
 
-import home.Home
-import play.api.mvc._
-import play.api.Play.current
-import java.io.FileInputStream
 import com.google.identitytoolkit.GitkitClient
+import home.Home
+import play.api.Play.current
+import play.api.mvc._
+
 import scala.collection.JavaConversions._
 
 object Session extends Controller {
