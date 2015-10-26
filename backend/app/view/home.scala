@@ -119,13 +119,17 @@ object Home {
             , href := "https://theismadsen.dk"
           )
           , img(src:=imageWidth(637, comic.comic), Style.fullWidth)
-          , div(Style.align.right, img(src := routes.Assets.at("images/tests-title.png")))
-          , div(Style.align.right, testElements)
         )
         , div(Style.outerColumns.right
           , next.map { nextComic =>
             a(href := routes.Application.c(nextComic.id), img(src := routes.Assets.at("images/pil-hoejre.png"), rel := "prerender", Style.fullWidth))
           }
+        )
+      )
+      , div(Style.container
+        , div(Style.centerColumn
+          , div(comic.tests.headOption.map { _ => div(Style.align.right, img(src := routes.Assets.at("images/tests-title.png"))) })
+          , div(Style.align.right, testElements)
         )
       )
     )

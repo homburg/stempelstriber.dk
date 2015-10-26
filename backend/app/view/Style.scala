@@ -35,11 +35,18 @@ object Style extends StyleSheet.Inline {
 
   private val contentWidth = (637 * 100 / (100 - 14) + 1).px
 
+  private val centerContentWidth = (100 - 14).%%
+
   object align {
     val right = style(display.flex
       , flexDirection.row
       , justifyContent.flexEnd
       , flexWrap.wrap
+    )
+
+    val center = style(display.flex
+      , flexDirection.row
+      , justifyContent.center
     )
   }
 
@@ -51,7 +58,7 @@ object Style extends StyleSheet.Inline {
   
 
   val container = style(display.flex
-    , justifyContent.spaceBetween,
+    , justifyContent.center,
     width(contentWidth),
     margin(7.px, auto),
 
@@ -78,7 +85,7 @@ object Style extends StyleSheet.Inline {
   }
 
   val centerColumn = style(position.relative
-    , width((100 - 14).%%)
+    , width(centerContentWidth)
   )
 
   object havhestenLink {
