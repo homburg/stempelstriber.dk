@@ -68,3 +68,5 @@ onLoad in Global := (Command.process("project backend", _: State)) compose (onLo
 EclipseKeys.skipParents in ThisBuild := false
 
 scalacOptions in ThisBuild ++= Seq("-unchecked", "-deprecation", "-feature")
+
+version in ThisBuild := "0.2-SNAPSHOT"
