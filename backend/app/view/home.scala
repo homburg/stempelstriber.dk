@@ -103,7 +103,7 @@ object Home {
     // )
 
     val testElements = comic.tests.map { url =>
-      a(href:=url, c:="imagelightbox ", img(src:=imageWidth(112, url)))
+      a(href:=url, c:="imagelightbox ", img(src:=imageWidth(127, url)))
     }
 
     document(
@@ -118,7 +118,7 @@ object Home {
             , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
             , href := "https://theismadsen.dk"
           )
-          , img(src:=imageWidth(637, comic.comic), Style.fullWidth)
+          , img(src:=imageWidth(Style.imageWidth, comic.comic), Style.fullWidth)
         )
         , div(Style.outerColumns.right
           , next.map { nextComic =>
