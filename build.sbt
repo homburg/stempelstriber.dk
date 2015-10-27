@@ -69,4 +69,4 @@ EclipseKeys.skipParents in ThisBuild := false
 
 scalacOptions in ThisBuild ++= Seq("-unchecked", "-deprecation", "-feature")
 
-version in ThisBuild := "0.2.2"
+version in ThisBuild := "0.2.3"
