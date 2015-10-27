@@ -128,7 +128,9 @@ object Home {
       )
       , div(Style.container
         , div(Style.centerColumn
-          , div(comic.tests.headOption.map { _ => div(Style.align.right, img(src := routes.Assets.at("images/tests-title.png"))) })
+          , div(comic.tests.headOption.map { _ =>
+            div(Style.testsTitle, img(src := routes.Assets.at("images/tests-title.png")))
+          })
           , div(Style.align.right, testElements)
         )
       )

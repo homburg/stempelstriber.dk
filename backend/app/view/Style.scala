@@ -33,9 +33,14 @@ object Style extends StyleSheet.Inline {
 
   val body = style()
 
-  private val contentWidth = (637 * 100 / (100 - 14) + 1).px
+  val testsTitle = style(align.right
+  )
 
-  private val centerContentWidth = (100 - 14).%%
+  private val sideColumnWidth = 6
+
+  private val contentWidth = (637 * 100 / (100 - sideColumnWidth*2) + 1).px
+
+  private val centerContentWidth = (100 - sideColumnWidth*2).%%
 
   object align {
     val right = style(display.flex
@@ -60,7 +65,7 @@ object Style extends StyleSheet.Inline {
   val container = style(display.flex
     , justifyContent.center,
     width(contentWidth),
-    margin(7.px, auto),
+    margin(21.px, auto),
 
     media.maxWidth(contentWidth)(
       width(100.%%)
@@ -69,15 +74,19 @@ object Style extends StyleSheet.Inline {
   )
 
   object outerColumns {
-    val both = style(width(7.%%)
+    val both = style(width(sideColumnWidth.%%)
       , display.flex
       , alignItems.center
       , justifyContent.center
     )
 
-    val left = style(both)
+    val left = style(both
+      , marginRight(6.px)
+    )
 
-    val right = style(both)
+    val right = style(both
+      , marginLeft(6.px)
+    )
 
     val link = style(cursor.pointer
       , fullWidth
@@ -90,7 +99,7 @@ object Style extends StyleSheet.Inline {
 
   object havhestenLink {
     val self = style(position.absolute
-      , width(7.%%)
+      , width(sideColumnWidth.%%)
       , right(`0`)
     )
 
