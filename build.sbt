@@ -3,7 +3,7 @@ import sbt.Project.projectToRef
 lazy val clients = Seq(frontend)
 lazy val scalaV = "2.11.7"
 
-libraryDependencies += "com.lihaoyi" % "ammonite-repl" % "0.4.8" % "test" cross CrossVersion.full
+libraryDependencies += "com.lihaoyi" % "ammonite-repl" % "0.5.1" % "test" cross CrossVersion.full
 
 lazy val backend = (project in file("backend")).settings(
   scalaVersion := scalaV,
@@ -18,15 +18,18 @@ lazy val backend = (project in file("backend")).settings(
     "org.webjars" %% "webjars-play" % "2.4.0-1",
     ws,
     specs2 % Test,
-    "com.lihaoyi" %% "scalatags" % "0.5.2",
+    "com.lihaoyi" %% "scalatags" % "0.5.3",
     "com.lihaoyi" %% "upickle" % "0.3.6",
     "com.lihaoyi" %% "pprint" % "0.3.6",
-    "com.github.japgolly.scalacss" %% "core" % "0.3.0",
-    "com.github.japgolly.scalacss" %%% "ext-scalatags" % "0.3.0",
+    "com.github.japgolly.scalacss" %% "core" % "0.3.1",
+    "com.github.japgolly.scalacss" %%% "ext-scalatags" % "0.3.1",
     "com.typesafe.slick" %% "slick" % "3.0.3",
     "org.slf4j" % "slf4j-nop" % "1.6.4",
     "com.google.identitytoolkit" % "gitkitclient" % "1.2.3",
-    "org.xerial" % "sqlite-jdbc" % "3.7.2"
+    "org.xerial" % "sqlite-jdbc" % "3.7.2",
+    "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.0",
+    "com.sksamuel.scrimage" %% "scrimage-io-extra" % "2.1.0",
+    "com.sksamuel.scrimage" %% "scrimage-filters" % "2.1.0"
   ),
   // Heroku specific
   herokuAppName in Compile := "your-heroku-app-name",
@@ -41,8 +44,8 @@ lazy val frontend = (project in file("frontend")).settings(
   persistLauncher in Test := false,
   sourceMapsDirectories += sharedJs.base / "..",
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.8.0",
-    "com.lihaoyi" %%% "scalatags" % "0.5.2",
+    "org.scala-js" %%% "scalajs-dom" % "0.8.2",
+    "com.lihaoyi" %%% "scalatags" % "0.5.3",
     "com.lihaoyi" %%% "upickle" % "0.3.6",
     "com.lihaoyi" %%% "pprint" % "0.3.6"
   ),
@@ -69,4 +72,4 @@ EclipseKeys.skipParents in ThisBuild := false
 
 scalacOptions in ThisBuild ++= Seq("-unchecked", "-deprecation", "-feature")
 
-version in ThisBuild := "0.2.3"
+version in ThisBuild := "0.2.4"
