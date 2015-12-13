@@ -110,7 +110,10 @@ object Home {
       div(Style.container
         , div(Style.outerColumns.left
           , prev.map { prevComic =>
-            a(href := routes.Application.c(prevComic.id), img(src := routes.Assets.at("images/pil-venstre.png"), rel := "prerender", Style.fullWidth))
+            a(href := routes.Application.c(prevComic.id)
+              , img(src := routes.Assets.at("images/pil-venstre.png")
+              , rel := "prerender", Style.fullWidth)
+            )
           }
         )
         , div(Style.centerColumn
@@ -118,11 +121,14 @@ object Home {
             , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
             , href := "https://theismadsen.dk"
           )
-          , img(src:=imageWidth(Style.imageWidth, comic.comic), Style.fullWidth)
+          , img(src:=imageWidth(Style.imageWidth, comic.src), Style.fullWidth)
         )
         , div(Style.outerColumns.right
           , next.map { nextComic =>
-            a(href := routes.Application.c(nextComic.id), img(src := routes.Assets.at("images/pil-hoejre.png"), rel := "prerender", Style.fullWidth))
+            a(href := routes.Application.c(nextComic.id)
+              , img(src := routes.Assets.at("images/pil-hoejre.png")
+              , rel := "prerender", Style.fullWidth)
+            )
           }
         )
       )

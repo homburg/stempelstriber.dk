@@ -11,7 +11,7 @@ object Comic {
     }
 
     def byId(id: Int): Option[Data.Comic] = comics.get(id)
-    def siblings(comic: Option[Data.Comic]): Tuple2[Option[Data.Comic], Option[Data.Comic]]  = comic match {
+    def siblings(comic: Option[Data.Comic]): (Option[Data.Comic], Option[Data.Comic])  = comic match {
       case Some(c) => {
         val cs = comics.values.toVector
         val index = cs.indexOf(c)
@@ -42,6 +42,7 @@ object Comic {
         },
         {
             "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-01.jpg",
+            "mobile": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav01-mobil.jpg",
             "created_at": "2015-09-02T19:41:57.572405",
             "id": 1,
             "tests": [],
@@ -121,6 +122,7 @@ object Comic {
         },
         {
             "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-02.jpg",
+            "mobile": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav02-mobil.jpg",
             "created_at": "2015-09-02T19:41:57.572610",
             "id": 2,
             "tests": [

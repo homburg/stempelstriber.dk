@@ -80,6 +80,7 @@ object Style extends StyleSheet.Inline {
       , display.flex
       , alignItems.center
       , justifyContent.center
+      , height(100.vh)
     )
 
     val left = style(both
