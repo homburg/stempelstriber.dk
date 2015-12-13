@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SBT: com.lihaoyi:fastparse_2.10:0.3.3:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.lihaoyi/fastparse_2.10/jars/fastparse_2.10-0.3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.lihaoyi/fastparse_2.10/docs/fastparse_2.10-0.3.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.lihaoyi/fastparse_2.10/srcs/fastparse_2.10-0.3.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

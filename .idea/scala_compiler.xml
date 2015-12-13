@@ -11,12 +11,7 @@
         <parameter value="utf8" />
       </parameters>
     </profile>
-    <profile name="SBT 4" modules="stempelstriber-dk,sharedJVM">
-      <option name="deprecationWarnings" value="true" />
-      <option name="uncheckedWarnings" value="true" />
-      <option name="featureWarnings" value="true" />
-    </profile>
-    <profile name="SBT 4" modules="frontend,sharedJS">
+    <profile name="SBT 2" modules="frontend,sharedJS">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
@@ -26,6 +21,11 @@
       <plugins>
         <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.11.7/jars/scalajs-compiler_2.11.7-0.6.5.jar" />
       </plugins>
+    </profile>
+    <profile name="SBT 3" modules="stempelstriber-dk,sharedJVM">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
     </profile>
   </component>
 </project>
