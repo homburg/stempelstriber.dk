@@ -45,7 +45,10 @@ object Style extends StyleSheet.Inline {
 
   val imageWidth = (totalWidth * centerPercentWidth / 100)
 
-  val phoneWidth = 980
+  // val phoneWidth = 980
+  val phoneWidth = 980.px
+  val phoneResolution = (1.5).dppx
+  val narrowWidth = 480.px
 
   object align {
     val right = style(display.flex
@@ -104,14 +107,15 @@ object Style extends StyleSheet.Inline {
 
   object responsiveComic {
     val large = style(fullWidth
-      , display.none
-      , media.portrait.minWidth((phoneWidth+1).px)(display.inline)
-      , media.landscape(display.inline)
+      , display.inline
+      , media.minResolution(phoneResolution).portrait.maxWidth(phoneWidth)(display.none)
+      , media.maxWidth(narrowWidth)(display.none)
     )
     
     val small = style(fullWidth
       , display.none
-      , media.portrait.maxWidth(phoneWidth.px)(display.inline)
+      , media.minResolution(phoneResolution).portrait.maxWidth(phoneWidth)(display.inline)
+      , media.maxWidth(narrowWidth)(display.inline)
     )
   }
 
