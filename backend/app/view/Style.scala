@@ -45,6 +45,8 @@ object Style extends StyleSheet.Inline {
 
   val imageWidth = (totalWidth * centerPercentWidth / 100)
 
+  val phoneWidth = 980
+
   object align {
     val right = style(display.flex
       , flexDirection.row
@@ -99,6 +101,19 @@ object Style extends StyleSheet.Inline {
   val centerColumn = style(position.relative
     , width(centerContentWidth)
   )
+
+  object responsiveComic {
+    val large = style(fullWidth
+      , display.none
+      , media.portrait.minWidth((phoneWidth+1).px)(display.inline)
+      , media.landscape(display.inline)
+    )
+    
+    val small = style(fullWidth
+      , display.none
+      , media.portrait.maxWidth(phoneWidth.px)(display.inline)
+    )
+  }
 
   object havhestenLink {
     val self = style(position.absolute

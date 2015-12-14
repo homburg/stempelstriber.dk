@@ -96,11 +96,24 @@ object Home {
     )
   )
 
+  def comicImage(width: Int, comic: Comic) = {
+    if (comic.mobile == "") {
+      img(Style.fullWidth
+        , src:=imageWidth(width, comic.comic)
+      )
+    } else {
+      div(
+        img(Style.responsiveComic.large
+          , src:=imageWidth(width, comic.comic)
+        )
+        , img(Style.responsiveComic.small
+          , src:=imageWidth(700, comic.mobile)
+        )
+      )
+    }
+  }
+
   def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
-    // val navigation: TypedTag[String] = div(Style.navigation.self
-    //   , div(Style.navigation.left, )
-    //   , div(Style.navigation.right, )
-    // )
 
     val testElements = comic.tests.map { url =>
       a(href:=url, c:="imagelightbox ", img(src:=imageWidth(127, url)))
@@ -121,7 +134,7 @@ object Home {
             , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
             , href := "https://theismadsen.dk"
           )
-          , img(src:=imageWidth(Style.imageWidth, comic.src), Style.fullWidth)
+          , comicImage(Style.imageWidth, comic)
         )
         , div(Style.outerColumns.right
           , next.map { nextComic =>

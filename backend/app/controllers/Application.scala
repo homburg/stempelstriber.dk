@@ -19,7 +19,7 @@ object Application extends Controller {
   }
 
   def index = Action {
-    Comic.comics.lastOption match {
+    Comic.comics.headOption match {
       case Some(p) => Redirect(routes.Application.c(p._1))
       case None => NotFound
     }
