@@ -2,8 +2,16 @@ package services
 
 import play.api.Play.current
 
-object ImageProxy {
+class ImageProxy(private val quality: Option[Int] = None) {
   private lazy val baseUrl = current.configuration.getString("imageProxy.baseUrl").get.stripSuffix("/")
-  private val quality = 92
-  def width(width: Int, url: String) = s"$baseUrl/${width}x,q${quality}/$url"
+  def url(url: String, width: Option[Int] = None) = {
+    val properties = List(
+      width map { _ + "x" },
+      quality map { "q" + _ }
+    ).flatten
+
+    val propertyPart = properties mkString ","
+
+    s"$baseUrl/${propertyPart}/$url"
+  }
 }

@@ -3,7 +3,8 @@ package home
 import controllers.routes
 import play.twirl.api.Html
 import playscalajs.html.{scripts => scalaJsScripts}
-import services.ImageProxy.{width => imageWidth}
+import services.Comic.Language
+import services.ImageProxy
 import shared.Data.Comic
 
 import scalacss.Defaults._
@@ -18,6 +19,8 @@ import scalatags.text.Builder
 
 object Home {
   import Implicits._
+
+  val imageProxy = new ImageProxy(Some(92))
 
   def Test() = {
     val c = container(row(colMd(12)(h1("Test"))))
@@ -96,34 +99,38 @@ object Home {
     )
   )
 
-  def comicImage(width: Int, comic: Comic) = {
-    if (comic.mobile == "") {
+  def comicImage(language: Language, width: Int, comic: Comic) = {
+    // val comicUrl: String = comic.mobile.getOrElse(language.name, "")
+    val page = comic.page.get(language.name)
+    val mobileUrl = page.fold("")(_.mobileUrl)
+    val comicUrl = page.fold("")(_.url)
+    if (mobileUrl == "") {
       img(Style.fullWidth
-        , src:=imageWidth(width, comic.comic)
+        , src:=imageProxy.url(comicUrl, width=Some(width))
       )
     } else {
       div(
-        img(Style.responsiveComic.large
-          , src:=imageWidth(width, comic.comic)
+        img(Style.responsive.wideComic
+          , src:=imageProxy.url(comicUrl, width=Some(width))
         )
-        , img(Style.responsiveComic.small
-          , src:=imageWidth(700, comic.mobile)
+        , img(Style.responsive.narrowComic
+          , src:=imageProxy.url(mobileUrl, width=Some(700))
         )
       )
     }
   }
 
-  def comic(comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
+  def comic(language: Language, comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
 
     val testElements = comic.tests.map { url =>
-      a(href:=url, c:="imagelightbox ", img(src:=imageWidth(127, url)))
+      a(href:=url, c:="imagelightbox ", img(src:=imageProxy.url(url, width=Some(127))))
     }
 
     document(
       div(Style.container
         , div(Style.outerColumns.left
           , prev.map { prevComic =>
-            a(href := routes.Application.c(prevComic.id)
+            a(href := routes.Application.c(prevComic.id, language.name)
               , img(src := routes.Assets.at("images/pil-venstre.png")
               , rel := "prerender", Style.fullWidth)
             )
@@ -134,23 +141,25 @@ object Home {
             , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
             , href := "https://theismadsen.dk"
           )
-          , comicImage(Style.imageWidth, comic)
+          , comicImage(language, Style.imageWidth, comic)
         )
         , div(Style.outerColumns.right
           , next.map { nextComic =>
-            a(href := routes.Application.c(nextComic.id)
+            a(href := routes.Application.c(nextComic.id, language.name)
               , img(src := routes.Assets.at("images/pil-hoejre.png")
               , rel := "prerender", Style.fullWidth)
             )
           }
         )
       )
-      , div(Style.container
-        , div(Style.centerColumn
-          , div(comic.tests.headOption.map { _ =>
-            div(Style.testsTitle, img(src := routes.Assets.at("images/tests-title.png")))
-          })
-          , div(Style.align.right, testElements)
+      , div(Style.responsive.wide
+        , div(Style.container
+          , div(Style.centerColumn
+            , div(comic.tests.headOption.map { _ =>
+              div(Style.testsTitle, img(src := routes.Assets.at("images/tests-title.png")))
+            })
+            , div(Style.align.right, testElements)
+          )
         )
       )
     )

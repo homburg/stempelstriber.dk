@@ -69,16 +69,15 @@ object Style extends StyleSheet.Inline {
     backgroundColor(rgba(255, 255, 255, 0.9))
   )
   
-
-  val container = style(display.flex
-    , justifyContent.center
-    , boxSizing.borderBox
+  val containerBase = style(boxSizing.borderBox
     , width(contentWidth)
     , margin(21.px, auto)
     , media.maxWidth(contentWidth)(
       width(100.%%)
     )
   )
+
+  val container = style(containerBase, justifyContent.center, display.flex)
 
   object outerColumns {
     val both = style(width(sideColumnPercentWidth.%%)
@@ -105,19 +104,23 @@ object Style extends StyleSheet.Inline {
     , width(centerContentWidth)
   )
 
-  object responsiveComic {
-    val large = style(fullWidth
-      , display.inline
+  object responsive {
+    val wide = style(display.inline
       , media.minResolution(phoneResolution).portrait.maxWidth(phoneWidth)(display.none)
       , media.maxWidth(narrowWidth)(display.none)
     )
     
-    val small = style(fullWidth
-      , display.none
+    val wideComic = style(wide, fullWidth)
+    
+    val narrow = style(display.none
       , media.minResolution(phoneResolution).portrait.maxWidth(phoneWidth)(display.inline)
       , media.maxWidth(narrowWidth)(display.inline)
     )
+
+    val narrowComic = style(narrow, fullWidth)
   }
+
+  lazy val testElementSection = style(containerBase, responsive.wide)
 
   object havhestenLink {
     val self = style(position.absolute

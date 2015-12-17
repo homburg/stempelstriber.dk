@@ -1,14 +1,60 @@
 package services
 
+import java.io.File
+
+import play.Play
+import play.api.mvc.{AnyContent, Request}
+import shared.Data.{Comic => ComicModel}
 import shared.Data
 import upickle.default._
 import scala.collection.SortedMap
 
 object Comic {
-    lazy val comics: SortedMap[Int, Data.Comic] = {
-      val comicList = read[Seq[Data.Comic]](data)
+
+  sealed trait Language { def name: String }
+  object Language {
+    lazy val default = Danish
+    private lazy val options = List(Danish, English)
+    def from(str: String): Language = {
+      options.find(_.name == str).getOrElse(Danish)
+    }
+
+    def from(request: Request[AnyContent]): Language = {
+      request.acceptLanguages.headOption.fold[Language](Danish) { lang =>
+        from(lang.code)
+      }
+    }
+  }
+  case object Danish extends Language { val name = "da" }
+  case object English extends Language { val name = "en" }
+
+  private lazy val comicList: Seq[ComicModel] = {
+    try {
+      read[Seq[ComicModel]](data)
+    } catch {
+      case e: Exception =>
+        e match {
+          case ij: upickle.Invalid.Json =>
+            println("Invalid json")
+            println(ij.msg)
+          case id: upickle.Invalid.Data =>
+            println("Invalid data")
+            println(id.data)
+            println(id.msg)
+          case otherwise =>
+            println("got exception...")
+            println(e.getMessage)
+        }
+
+        Seq.empty
+    }
+  }
+
+  lazy val comics: SortedMap[Int, ComicModel] = {
       SortedMap(comicList.map(c => c.id -> c): _*)
     }
+
+    def comicData: String = write[Seq[Data.Comic]](comicList)
 
     def byId(id: Int): Option[Data.Comic] = comics.get(id)
     def siblings(comic: Option[Data.Comic]): (Option[Data.Comic], Option[Data.Comic])  = comic match {
@@ -21,127 +67,8 @@ object Comic {
       case None => (None, None)
     }
 
-    val data = """[
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-10.jpg",
-            "created_at": "2015-09-02T19:41:57.572264",
-            "id": 10,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572355"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-07.jpg",
-            "created_at": "2015-09-02T19:41:57.572380",
-            "id": 7,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-3.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-2.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-1.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572390"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-01.jpg",
-            "mobile": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav01-mobil.jpg",
-            "created_at": "2015-09-02T19:41:57.572405",
-            "id": 1,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572414"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-09.jpg",
-            "created_at": "2015-09-02T19:41:57.572428",
-            "id": 9,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-6.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-4.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-3.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-2.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-5.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-1.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572435"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-04.jpg",
-            "created_at": "2015-09-02T19:41:57.572450",
-            "id": 4,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl04-1.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl04-2.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572458"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-12.jpg",
-            "created_at": "2015-09-02T19:41:57.572472",
-            "id": 12,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-1.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-2.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-3.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572480"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-03.jpg",
-            "created_at": "2015-09-02T19:41:57.572494",
-            "id": 3,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl03-1.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572501"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-06.jpg",
-            "created_at": "2015-09-02T19:41:57.572515",
-            "id": 6,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572522"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-13.jpg",
-            "created_at": "2015-09-02T19:41:57.572537",
-            "id": 13,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572544"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-05.jpg",
-            "created_at": "2015-09-02T19:41:57.572563",
-            "id": 5,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572571"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-08.jpg",
-            "created_at": "2015-09-02T19:41:57.572589",
-            "id": 8,
-            "tests": [],
-            "updated_at": "2015-09-02T19:41:57.572597"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-02.jpg",
-            "mobile": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav02-mobil.jpg",
-            "created_at": "2015-09-02T19:41:57.572610",
-            "id": 2,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-4.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-3.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-1.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-2.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572618"
-        },
-        {
-            "comic": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-11.jpg",
-            "created_at": "2015-09-02T19:41:57.572632",
-            "id": 11,
-            "tests": [
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl11-1.jpg",
-                "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl11-2.jpg"
-            ],
-            "updated_at": "2015-09-02T19:41:57.572639"
-        }
-    ]"""
+    lazy val data = {
+      val file: File = Play.application().getFile("conf/comics.json")
+      scala.io.Source.fromFile(file).getLines.mkString("\n")
+    }
 }

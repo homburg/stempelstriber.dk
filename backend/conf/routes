@@ -10,7 +10,9 @@ GET 		/webjars/*file        controllers.WebJarAssets.at(file)
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
  
-GET /c/:id controllers.Application.c(id: Int)
+GET /c/:id controllers.Application.comicWithoutLanguage(id: Int)
+
+GET /c/:lang/:id controllers.Application.c(id: Int, lang: String)
 
 GET /session/sign-in controllers.Session.signIn()
 GET /login controllers.Session.signIn()
@@ -23,4 +25,9 @@ GET /oauth/success controllers.Session.success()
 
 GET /test/db	controllers.Application.testDb()
 GET /test/setup-db	controllers.Application.setupDb()
+GET /test/language  controllers.Application.language()
+
+GET /comics.scala   controllers.Application.comics()
+GET /comics.json    controllers.Application.comicsJson()
+
 

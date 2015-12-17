@@ -1,0 +1,175 @@
+[
+  {
+    "id": 10,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572264",
+    "updated_at": "2015-09-02T19:41:57.572355",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-10.jpg"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-3.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-2.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl07-1.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572380",
+    "updated_at": "2015-09-02T19:41:57.572390",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-07.jpg"
+      }
+    }
+  },
+  {
+    "id": 1,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572405",
+    "updated_at": "2015-09-02T19:41:57.572414",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-01.jpg",
+        "mobileUrl": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav01-mobil.jpg"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-6.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-4.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-3.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-2.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-5.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl09-1.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572428",
+    "updated_at": "2015-09-02T19:41:57.572435",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-09.jpg"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl04-1.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl04-2.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572450",
+    "updated_at": "2015-09-02T19:41:57.572458",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-04.jpg"
+      }
+    }
+  },
+  {
+    "id": 12,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-1.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-2.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl12-3.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572472",
+    "updated_at": "2015-09-02T19:41:57.572480",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-12.jpg"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl03-1.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572494",
+    "updated_at": "2015-09-02T19:41:57.572501",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-03.jpg"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572515",
+    "updated_at": "2015-09-02T19:41:57.572522",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-06.jpg"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572537",
+    "updated_at": "2015-09-02T19:41:57.572544",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-13.jpg"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572563",
+    "updated_at": "2015-09-02T19:41:57.572571",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-05.jpg"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "tests": [],
+    "created_at": "2015-09-02T19:41:57.572589",
+    "updated_at": "2015-09-02T19:41:57.572597",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-08.jpg"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-4.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-3.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-1.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl02-2.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572610",
+    "updated_at": "2015-09-02T19:41:57.572618",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-02.jpg",
+        "mobileUrl": "http://cdn.c.homburg.dk/stempelstriber.dk/mobil/hav02-mobil.jpg"
+      }
+    }
+  },
+  {
+    "id": 11,
+    "tests": [
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl11-1.jpg",
+      "http://stempelstriber-dev.s3.amazonaws.com/tests/fejl11-2.jpg"
+    ],
+    "created_at": "2015-09-02T19:41:57.572632",
+    "updated_at": "2015-09-02T19:41:57.572639",
+    "page": {
+      "da": {
+        "url": "http://stempelstriber-dev.s3.amazonaws.com/comics/local-11.jpg"
+      }
+    }
+  }
+]
