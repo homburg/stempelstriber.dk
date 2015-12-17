@@ -19,7 +19,11 @@
       <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/resource_managed/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/resource_managed/test" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../backend/test/resources" type="java-test-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../../backend/target" />
+      <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/routes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/routes/main/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/routes/main/controllers/javascript" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../backend/target/scala-2.11/routes/main/router" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../backend/target/resolution-cache" />
       <excludeFolder url="file://$MODULE_DIR$/../../backend/target/streams" />
       <excludeFolder url="file://$MODULE_DIR$/../../backend/target/universal" />
