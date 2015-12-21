@@ -11,8 +11,13 @@ import scala.collection.SortedMap
 
 object Comic {
 
-  sealed trait Language { def name: String }
+  sealed trait Language {
+    def name: String
+    lazy val imgUrl: String = s"images/flag-${this.name}.png"
+  }
   object Language {
+    def other(language: Language) = options.find(_ != language).get
+
     lazy val default = Danish
     private lazy val options = List(Danish, English)
     def from(str: String): Language = {

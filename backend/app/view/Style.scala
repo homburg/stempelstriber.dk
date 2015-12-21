@@ -122,13 +122,23 @@ object Style extends StyleSheet.Inline {
 
   lazy val testElementSection = style(containerBase, responsive.wide)
 
+  val topLinkHeight = style(height(52.%%))
+  val topLinkImage = style(width(62.%%))
+
   object havhestenLink {
     val self = style(position.absolute
-      , width(sideColumnPercentWidth.%%)
-      , right(`0`)
+      , right(0.px)
     )
 
-    val img = style(width(52.%%))
+    val img = style(topLinkImage)
+  }
+
+  object languageLink {
+    val self = style(position.absolute
+      , right(32.px)
+    )
+
+    val img = style(topLinkImage)
   }
   
   val fullWidth = style(

@@ -137,6 +137,10 @@ object Home {
           }
         )
         , div(Style.centerColumn
+          , a(Style.languageLink.self
+            , img(src := routes.Assets.at(Language.other(language).imgUrl), Style.languageLink.img)
+            , href := routes.Application.c(comic.id, Language.other(language).name)
+          )
           , a(Style.havhestenLink.self
             , img(src := routes.Assets.at("images/clipboard-link.png"), Style.havhestenLink.img)
             , href := "https://theismadsen.dk"
