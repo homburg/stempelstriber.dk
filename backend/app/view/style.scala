@@ -1,4 +1,4 @@
-package home
+package view.style
 
 import scalacss.Defaults._
 

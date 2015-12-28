@@ -23,11 +23,10 @@ GET /oauth/sign-out controllers.Application.index()
 
 GET /oauth/success controllers.Session.success()
 
-GET /test/db	controllers.Application.testDb()
-GET /test/setup-db	controllers.Application.setupDb()
-GET /test/language  controllers.Application.language()
+GET /test/db	controllers.Test.testDb()
+GET /test/language  controllers.Test.language()
 
-GET /comics.scala   controllers.Application.comics()
-GET /comics.json    controllers.Application.comicsJson()
+GET /test/comics.scala   controllers.Test.comics()
+GET /test/comics.json    controllers.Test.comicsJson()
 
-
+GET /admin/setup-db	controllers.Admin.setupDb()

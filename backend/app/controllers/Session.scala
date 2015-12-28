@@ -1,9 +1,9 @@
 package controllers
 
-import com.google.identitytoolkit.GitkitClient
-import home.Home
+import view.home.Home
 import play.api.Play.current
 import play.api.mvc._
+import com.google.identitytoolkit.GitkitClient
 
 import scala.collection.JavaConversions._
 

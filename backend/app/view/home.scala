@@ -1,4 +1,4 @@
-package home
+package view.home
 
 import controllers.routes
 import play.twirl.api.Html
@@ -16,9 +16,10 @@ import scalatags.Text.tags2.{style => headStyle, title => headTitle}
 import scalatags.generic.Modifier
 import scalatags.text.Builder
 
+import view.style.{Style, Head}
 
 object Home {
-  import Implicits._
+  import view.Implicits._
 
   val imageProxy = new ImageProxy(Some(92))
 

@@ -1,4 +1,4 @@
-package home
+package view
 
 import scalatags.Text.all._
 import play.api.mvc.Call

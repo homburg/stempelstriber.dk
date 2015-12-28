@@ -14,6 +14,7 @@ lazy val backend = (project in file("backend")).settings(
     "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
   ),
   libraryDependencies ++= Seq(
+    filters,
     "com.vmunier" %% "play-scalajs-scripts" % "0.3.0",
     "org.webjars" %% "webjars-play" % "2.4.0-1",
     ws,
@@ -44,14 +45,13 @@ lazy val frontend = (project in file("frontend")).settings(
   persistLauncher in Test := false,
   sourceMapsDirectories += sharedJs.base / "..",
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.8.2",
-    "com.lihaoyi" %%% "scalatags" % "0.5.3",
-    "com.lihaoyi" %%% "upickle" % "0.3.6",
-    "com.lihaoyi" %%% "pprint" % "0.3.6"
+    "org.scala-js" %%% "scalajs-dom" % "0.8.2"
+    , "com.lihaoyi" %%% "scalatags" % "0.5.3"
+    , "com.lihaoyi" %%% "upickle" % "0.3.6"
+    , "com.lihaoyi" %%% "pprint" % "0.3.6"
+    , "be.doeraene" %%% "scalajs-jquery" % "0.8.1"
   ),
-  jsDependencies := Seq(
-    "org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
-    "org.webjars" % "jquery" % "2.1.4" / "jquery/2.1.4/jquery.js" minified "jquery/2.1.4/jquery.min.js" commonJSName "jQuery"
+  jsDependencies := Seq("org.webjars" % "react" % "0.13.3" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React"
   )
 ).enablePlugins(ScalaJSPlugin, ScalaJSPlay).
   dependsOn(sharedJs)
