@@ -31,3 +31,5 @@ shared/.jvm
 .target
 bin/
 /.env
+
+gitkit-server-conf.json

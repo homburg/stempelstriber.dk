@@ -16,15 +16,17 @@ GET /c/:lang/:id controllers.Application.c(id: Int, lang: String)
 
 GET /session/sign-in controllers.Session.signIn()
 GET /login controllers.Session.signIn()
+GET /logout controllers.Session.signOut()
 
 GET /oauth/callback controllers.Session.widget()
 
-GET /oauth/sign-out controllers.Application.index()
+GET /oauth/signout controllers.Session.signOut()
 
 GET /oauth/success controllers.Session.success()
 
 GET /test/db	controllers.Test.testDb()
 GET /test/language  controllers.Test.language()
+GET /test/session controllers.Test.session()
 
 GET /test/comics.scala   controllers.Test.comics()
 GET /test/comics.json    controllers.Test.comicsJson()
