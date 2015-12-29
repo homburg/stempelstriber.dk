@@ -13,7 +13,13 @@ import view.style.Style
 import scala.collection.JavaConversions._
 import services.json.Writes._
 
+import view.{Test => View}
+
 object Test extends Controller {
+
+  def index = Action {
+    Ok(View.index)
+  }
 
   def testDb = Action.async { r =>
     User.doNames map {

@@ -1,15 +1,16 @@
 package controllers
 
-import view.home.Home
+import play.twirl.api.Html
+import view.{Session => View}
 import play.api.mvc._
 import services.session.GitKit
 
 object Session extends Controller {
   def signIn = Action {
-    Ok(Home.signIn)
+    Ok(View.signIn)
   }
 
-  def widget = Action { Ok(Home.widget) }
+  def widget = Action { Ok(View.widget) }
 
   def success = Action { request =>
 

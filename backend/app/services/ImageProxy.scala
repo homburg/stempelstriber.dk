@@ -3,6 +3,8 @@ package services
 import play.api.Play.current
 
 class ImageProxy(private val quality: Option[Int] = None) {
+  def this(q: Int) = this(Some(q))
+
   private lazy val baseUrl = current.configuration.getString("imageProxy.baseUrl").get.stripSuffix("/")
   def url(url: String, width: Option[Int] = None) = {
     val properties = List(
