@@ -21,6 +21,7 @@ object Shared {
 
   val integrity = "integrity".attr
   val crossorigin = "crossorigin".attr
+  val property = "property".attr
 
   val imageProxy = new ImageProxy(92)
 

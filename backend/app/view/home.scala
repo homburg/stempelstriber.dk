@@ -2,6 +2,7 @@ package view.home
 
 import controllers.routes
 import play.twirl.api.Html
+import play.api.mvc.RequestHeader
 import playscalajs.html.{scripts => scalaJsScripts}
 import services.Comic.Language
 import shared.Data.Comic
@@ -46,7 +47,7 @@ object Home {
     }
   }
 
-  def comic(language: Language, comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
+  def comic(request: RequestHeader, language: Language, comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
 
     val testElements = comic.tests.map { url =>
       a(href:=url, c:="imagelightbox ", img(src:=imageProxy.url(url, width=Some(127))))
@@ -62,8 +63,8 @@ object Home {
       case _ => "Havhesten"
     }
 
-    document(title
-      , div(Style.container
+    val bodyChildren = List(
+      div(Style.container
         , div(Style.outerColumns.left
           , prev.map { prevComic =>
             a(href := routes.Application.c(prevComic.id, language.name)
@@ -113,9 +114,26 @@ object Home {
         )
       )
     )
+
+    val page = comic.page.get(language.name)
+
+    val ogComicData = List(
+      meta(property := "og:title", content := s"$title - ${comic.id}")
+      , meta(property := "og:url", content := routes.Application.c(comic.id, language.name).absoluteURL()(request))
+    )
+    
+    val ogPageData = List(
+      page.map { p =>
+        meta(property := "og:image", content := p.url)
+      }
+    )
+
+    val headChildren = ogComicData ++ ogPageData.flatten
+
+    document(title, headChildren, bodyChildren)
   }
 
-  def document(title: String, children: Modifier[Builder]*): Html = {
+  def document(title: String, headChildren: List[Modifier[Builder]], bodyChildren: List[Modifier[Builder]]): Html = {
     Html(
       html(
         head(
@@ -138,9 +156,10 @@ object Home {
                 to    { opacity: 1; }
               }
           """)
+          , headChildren
         ),
         body(
-          children,
+          bodyChildren,
           raw(scalaJsScripts("frontend")),
           javascript(src:=routes.Assets.at("imagelightbox.min.js"))
         )

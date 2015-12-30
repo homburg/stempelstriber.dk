@@ -18,14 +18,14 @@ object Application extends Controller {
     Redirect(routes.Application.c(id, Language.default.name))
   }
 
-  def c(id: Int, lang: String = Language.default.name) = Action {
+  def c(id: Int, lang: String = Language.default.name) = Action { request =>
     val comicOption = Comic.byId(id)
     val siblings = Comic.siblings(comicOption)
     comicOption match {
       case Some(comic) =>
         comic.page.get(lang) match {
           case Some(_) =>
-            Ok(Home.comic(Language.from(lang), comic, siblings._1, siblings._2)).withHeaders(CONTENT_TYPE -> HTML)
+            Ok(Home.comic(request, Language.from(lang), comic, siblings._1, siblings._2)).withHeaders(CONTENT_TYPE -> HTML)
           case None => if (lang != Language.default.name) {
             Redirect(routes.Application.c(id, Language.default.name))
           } else {
