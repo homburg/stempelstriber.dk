@@ -119,6 +119,7 @@ object Home {
 
     val ogComicData = List(
       meta(property := "og:title", content := s"$title - ${comic.id}")
+      , meta(property := "og:type", content := "article")
       , meta(property := "og:url", content := routes.Application.c(comic.id, language.name).absoluteURL()(request))
       , meta(property := "fb:app_id", content := "1081496458568945")
     )
