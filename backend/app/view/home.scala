@@ -52,8 +52,18 @@ object Home {
       a(href:=url, c:="imagelightbox ", img(src:=imageProxy.url(url, width=Some(127))))
     }
 
-    document(
-      div(Style.container
+    val testTitleImage = img(src := routes.Assets.at(language match {
+      case Language.English => "images/forproeve-title-engelsk.png"
+      case _ => "images/tests-title.png"
+    }))
+
+    val title = language match {
+      case Language.English => "The Local"
+      case _ => "Havhesten"
+    }
+
+    document(title
+      , div(Style.container
         , div(Style.outerColumns.left
           , prev.map { prevComic =>
             a(href := routes.Application.c(prevComic.id, language.name)
@@ -96,7 +106,7 @@ object Home {
         , div(Style.container
           , div(Style.centerColumn
             , div(comic.tests.headOption.map { _ =>
-              div(Style.testsTitle, img(src := routes.Assets.at("images/tests-title.png")))
+              div(Style.testsTitle, testTitleImage)
             })
             , div(Style.align.right, testElements)
           )
@@ -105,11 +115,11 @@ object Home {
     )
   }
 
-  def document(children: Modifier[Builder]*): Html = {
+  def document(title: String, children: Modifier[Builder]*): Html = {
     Html(
       html(
         head(
-          headTitle("stempelstriber.dk"),
+          headTitle(title),
           Head.render[TypedTag[String]],
           Style.render[TypedTag[String]],
           headStyle(`type`:="text/css", """

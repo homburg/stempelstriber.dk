@@ -4,10 +4,14 @@ import java.io.File
 
 import play.Play
 import play.api.mvc.{AnyContent, Request}
+import play.api.Play.current
 import shared.Data.{Comic => ComicModel}
 import shared.Data
 import upickle.default._
 import scala.collection.SortedMap
+
+import com.typesafe.config.ConfigException
+
 
 object Comic {
 
@@ -29,11 +33,12 @@ object Comic {
         from(lang.code)
       }
     }
-  }
-  case object Danish extends Language { val name = "da" }
-  case object English extends Language { val name = "en" }
 
-  private lazy val comicList: Seq[ComicModel] = {
+    case object Danish extends Language { val name = "da" }
+    case object English extends Language { val name = "en" }
+  }
+
+  private def comicList: Seq[ComicModel] = {
     try {
       read[Seq[ComicModel]](data)
     } catch {
@@ -55,7 +60,7 @@ object Comic {
     }
   }
 
-  lazy val comics: SortedMap[Int, ComicModel] = {
+  def comics: SortedMap[Int, ComicModel] = {
       SortedMap(comicList.map(c => c.id -> c): _*)
     }
 
@@ -72,8 +77,30 @@ object Comic {
       case None => (None, None)
     }
 
-    lazy val data = {
-      val file: File = Play.application().getFile("conf/comics.json")
-      scala.io.Source.fromFile(file).getLines.mkString("\n")
+    lazy val staticComicsJsonFile = Play.application().getFile("conf/comics.json")
+
+    def data = {
+      println("Reading from file: " + comicsJsonFile.getAbsolutePath)
+      scala.io.Source.fromFile(comicsJsonFile).getLines.mkString("\n")
+    }
+
+    def configComicsJsonFile = {
+      val path = current.configuration.getString("comics_json_file")
+      println("Config says comics file: " + path.getOrElse("<no file>"))
+      path.map { new File(_) }
+    }
+    def comicsJsonFile: File = {
+      configComicsJsonFile match {
+        case None => staticComicsJsonFile
+        case Some(file) => {
+          println(s"Config comics.json file is file ${file.isFile} and can read ${file.canRead}")
+          if (file.isFile && file.canRead) {
+            println("Using file: " + file.getName)
+            file
+          } else {
+            staticComicsJsonFile
+          }
+        }
+      }
     }
 }
