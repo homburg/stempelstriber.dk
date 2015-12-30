@@ -53,8 +53,8 @@ object Home {
     }
 
     val testTitleImage = img(src := routes.Assets.at(language match {
-      case Language.English => "images/forproeve-title-engelsk.png"
-      case _ => "images/tests-title.png"
+      case Language.English => "images/en/tests-title.png"
+      case _ => "images/da/tests-title.png"
     }))
 
     val title = language match {
