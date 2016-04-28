@@ -134,17 +134,19 @@ object Home {
     val headChildren = ogComicData ++ ogPageData.flatten
 
     val headers = List(
-      ("Link" -> s"</assets/frontend-jsdeps.min.js>; rel=preload")
-      , ("Link" -> s"</assets/frontend-opt.js>; rel=preload")
-      , ("Link" -> s"</assets/frontend-launcher.js>; rel=preload")
+      ("Link" -> List(
+        s"</assets/frontend-jsdeps.min.js>; rel=preload"
+        , s"</assets/frontend-opt.js>; rel=preload"
+        , s"</assets/frontend-launcher.js>; rel=preload"
 
-      , ("Link" -> s"</assets/images/pil-hoejre-mobil.png>; rel=preload")
-      , ("Link" -> s"</assets/images/pil-hoejre.png>; rel=preload")
+        , s"</assets/images/pil-hoejre-mobil.png>; rel=preload"
+        , s"</assets/images/pil-hoejre.png>; rel=preload"
 
-      , ("Link" -> s"</assets/images/pil-venstre-mobil.png>; rel=preload")
-      , ("Link" -> s"</assets/images/pil-venstre.png>; rel=preload")
+        , s"</assets/images/pil-venstre-mobil.png>; rel=preload"
+        , s"</assets/images/pil-venstre.png>; rel=preload"
 
-      , ("Link" -> s"</assets/images/pil-venstre.png>; rel=preload")
+        , s"</assets/images/pil-venstre.png>; rel=preload"
+      ).mkString(", "))
     )
     (document(title, headChildren, bodyChildren), headers)
   }
