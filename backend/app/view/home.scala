@@ -47,7 +47,7 @@ object Home {
     }
   }
 
-  def comic(request: RequestHeader, language: Language, comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): Html = {
+  def comic(request: RequestHeader, language: Language, comic: Comic, prev: Option[Comic] = None, next: Option[Comic] = None): (Html, List[(String, String)]) = {
 
     val testElements = comic.tests.map { url =>
       a(href:=url, c:="imagelightbox ", img(src:=imageProxy.url(url, width=Some(127))))
@@ -133,7 +133,20 @@ object Home {
 
     val headChildren = ogComicData ++ ogPageData.flatten
 
-    document(title, headChildren, bodyChildren)
+    val headers = List(
+      ("Link" -> s"</assets/frontend-jsdeps.min.js>; rel=preload")
+      , ("Link" -> s"</assets/frontend-opt.js>; rel=preload")
+      , ("Link" -> s"</assets/frontend-launcher.js>; rel=preload")
+
+      , ("Link" -> s"</assets/images/pil-hoejre-mobil.png>; rel=preload")
+      , ("Link" -> s"</assets/images/pil-hoejre.png>; rel=preload")
+
+      , ("Link" -> s"</assets/images/pil-venstre-mobil.png>; rel=preload")
+      , ("Link" -> s"</assets/images/pil-venstre.png>; rel=preload")
+
+      , ("Link" -> s"</assets/images/pil-venstre.png>; rel=preload")
+    )
+    (document(title, headChildren, bodyChildren), headers)
   }
 
   def document(title: String, headChildren: List[Modifier[Builder]], bodyChildren: List[Modifier[Builder]]): Html = {

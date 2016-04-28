@@ -24,8 +24,12 @@ object Application extends Controller {
     comicOption match {
       case Some(comic) =>
         comic.page.get(lang) match {
-          case Some(_) =>
-            Ok(Home.comic(request, Language.from(lang), comic, siblings._1, siblings._2)).withHeaders(CONTENT_TYPE -> HTML)
+          case Some(_) => {
+            val view = Home.comic(request, Language.from(lang), comic, siblings._1, siblings._2)
+            Ok(view._1)
+              .withHeaders(CONTENT_TYPE -> HTML)
+              .withHeaders(view._2:_*)
+          }
           case None => if (lang != Language.default.name) {
             Redirect(routes.Application.c(id, Language.default.name))
           } else {
