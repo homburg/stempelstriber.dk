@@ -1,0 +1,323 @@
+<html><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"><title>The Local</title><style type="text/css">* {
+  margin: 0;
+  padding: 0;
+}
+
+#imagelightbox {
+  position: fixed;
+  z-index: 9999;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+#imagelightbox-overlay {
+  background-color: rgba(0,0,0,0.6);
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+</style><style type="text/css">.Style-align-right {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.Style-align-center {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+
+.Style-testsTitle {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.Style-noSelect {
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: red;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.Style-containerBase {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 960px;
+  margin: 21px auto;
+}
+
+.Style-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 960px;
+  margin: 21px auto;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.Style-centerColumn {
+  position: relative;
+  width: 88%;
+}
+
+.Style-topLinkHeight {
+  height: 52%;
+}
+
+.Style-topLinkImage {
+  width: 62%;
+}
+
+.Style-fullWidth {
+  width: 100%;
+}
+
+.Style-outerColumns-both {
+  width: 6%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.Style-outerColumns-left {
+  width: 6%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  height: 100vh;
+  margin-right: 6px;
+}
+
+.Style-outerColumns-right {
+  width: 6%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  height: 100vh;
+  margin-left: 6px;
+}
+
+.Style-outerColumns-link {
+  cursor: pointer;
+  width: 100%;
+}
+
+.Style-languageLink-self {
+  position: absolute;
+  right: 32px;
+}
+
+.Style-languageLink-img {
+  width: 62%;
+}
+
+.Style-havhestenLink-self {
+  position: absolute;
+  right: 0;
+}
+
+.Style-havhestenLink-img {
+  width: 62%;
+}
+
+.Style-responsive-wide {
+  display: inline;
+}
+
+.Style-responsive-wideComic {
+  display: inline;
+  width: 100%;
+}
+
+.Style-responsive-narrow {
+  display: none;
+}
+
+.Style-responsive-narrowComic {
+  display: none;
+  width: 100%;
+}
+
+@media (max-width:960px) {
+  .Style-containerBase {
+    width: 100%;
+  }
+  .Style-container {
+    width: 100%;
+  }
+}
+
+@media (min-resolution:1.5dppx) and (orientation:portrait) and (max-width:980px) {
+  .Style-responsive-wide {
+    display: none;
+  }
+  .Style-responsive-wideComic {
+    display: none;
+  }
+  .Style-responsive-narrow {
+    display: inline;
+  }
+  .Style-responsive-narrowComic {
+    display: inline;
+  }
+}
+
+@media (max-width:480px) {
+  .Style-responsive-wide {
+    display: none;
+  }
+  .Style-responsive-wideComic {
+    display: none;
+  }
+  .Style-responsive-narrow {
+    display: inline;
+  }
+  .Style-responsive-narrowComic {
+    display: inline;
+  }
+}
+
+</style><style type="text/css">
+            #imagelightbox-overlay {
+              -webkit-animation: fade-in .25s linear;
+              animation: fade-in .25s linear;
+            }
+              @-webkit-keyframes fade-in
+              {
+                from  { opacity: 0; }
+                to    { opacity: 1; }
+              }
+              @keyframes fade-in
+              {
+                from  { opacity: 0; }
+                to    { opacity: 1; }
+              }
+          </style><meta property="og:title" content="The Local - 3" /><meta property="og:type" content="article" /><meta property="og:url" content="https://www.stempelstriber.dk/c/en/3" /><meta property="fb:app_id" content="1081496458568945" /><meta property="og:image" content="http://cdn.c.homburg.dk/stempelstriber/engelsk/local-03.jpg" /></head><body><div class="Style-container"><div class="Style-outerColumns-left"><a href="2.html" rel="prerender"><span class="Style-responsive-wide"><img src="../../assets/images/pil-venstre.png" class="Style-fullWidth" /></span><span class="Style-responsive-narrow"><img src="../../assets/images/pil-venstre-mobil.png" class="Style-fullWidth" /></span></a></div><div class="Style-centerColumn"><a class="Style-languageLink-self" href="../da/3.html"><img src="../../assets/images/flag-da.png" class="Style-languageLink-img" /></a><a class="Style-havhestenLink-self" href="https://theismadsen.dk"><img src="../../assets/images/clipboard-link.png" class="Style-havhestenLink-img" /></a><div><img class="Style-responsive-wideComic" src="../../../image.stempelstriber.dk/844x,q92/http:/cdn.c.homburg.dk/stempelstriber/engelsk/local-03.jpg" /><img class="Style-responsive-narrowComic" src="../../../image.stempelstriber.dk/700x,q92/http:/cdn.c.homburg.dk/stempelstriber/mobil&#32;-&#32;engelsk/local03-mobil.jpg" /></div></div><div class="Style-outerColumns-right"><a href="4.html" rel="prerender"><span class="Style-responsive-wide"><img src="../../assets/images/pil-hoejre.png" class="Style-fullWidth" /></span><span class="Style-responsive-narrow"><img src="../../assets/images/pil-hoejre-mobil.png" class="Style-fullWidth" /></span></a></div></div><div class="Style-responsive-wide"><div class="Style-container"><div class="Style-centerColumn"><div><div class="Style-testsTitle"><img src="../../assets/images/en/tests-title.png" /></div></div><div class="Style-align-right"><a href="../../../cdn.c.homburg.dk/stempelstriber/tests/fejl03-1.jpg" class="imagelightbox "><img src="../../../image.stempelstriber.dk/127x,q92/http:/cdn.c.homburg.dk/stempelstriber/tests/fejl03-1.jpg" /></a></div></div></div></div>
+
+
+
+
+
+  
+    
+<script src="../../assets/frontend-jsdeps.min.js" type="text/javascript"></script>
+
+  
+
+
+
+
+
+
+
+
+<script src="../../assets/frontend-opt.js" type="text/javascript"></script>
+
+
+
+
+<script src="../../assets/frontend-launcher.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="../../assets/imagelightbox.min.js"></script></body></html>
