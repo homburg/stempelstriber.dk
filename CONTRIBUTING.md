@@ -71,6 +71,24 @@ The website displays webcomic strips in a clean, responsive interface that works
 4. Add corresponding images to appropriate directories
 5. Test responsive behavior on mobile and desktop
 
+## GitButler Integration
+
+This project uses [GitButler](https://gitbutler.com/) for commit management to create small, logical commits and improve code review quality.
+
+### Why GitButler?
+- Creates clean, focused commits
+- Improves commit history readability
+- Makes code reviews more manageable
+- Integrates seamlessly with Claude Code sessions
+
+### Getting Started with GitButler
+1. Install GitButler from [gitbutler.com](https://gitbutler.com/)
+2. Set up GitButler CLI (via GitButler General settings)
+3. Use GitButler to manage your commits instead of direct `git commit` commands
+
+### For Claude Code Users
+If using Claude Code with this project, GitButler hooks are configured to automatically manage branching and commits during development sessions.
+
 ## Additional Documentation
 
 More specific workflow documentation and tooling guidelines will be added as the project evolves. Check the RFCs for planned improvements and processes.
