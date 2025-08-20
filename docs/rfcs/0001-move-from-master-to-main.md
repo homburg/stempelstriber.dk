@@ -6,7 +6,7 @@
 
 ## Abstract
 
-This RFC proposes to rename the `main` branch to `main` in this repository.
+This RFC proposes to rename the `master` branch to `main` in this repository.
 
 ## Motivation
 
@@ -14,8 +14,8 @@ The term "master" is outdated and has connotations that are not inclusive. The t
 
 ## Plan
 
-1.  Create a new `main` branch from `main`.
+1.  Create a new `main` branch from `master`.
 2.  Push the `main` branch to the remote repository.
 3.  Change the default branch on GitHub to `main`.
-4.  Update all references to `main` in the codebase to `main`.
-5.  Delete the `main` branch.
+4.  Update all references to `master` in the codebase to `main`.
+5.  Delete the `master` branch.

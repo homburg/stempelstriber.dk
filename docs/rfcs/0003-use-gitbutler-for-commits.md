@@ -10,7 +10,7 @@ This RFC proposes to use GitButler for committing work in this repository.
 
 ## Dependencies
 
-This RFC depends on the successful implementation of [RFC 0001: Move from main to main](0001-move-from-master-to-main.md).
+This RFC depends on the successful implementation of [RFC 0001: Move from master to main](0001-move-from-master-to-main.md).
 
 ## Motivation
 
