@@ -23,3 +23,4 @@ The website is a static site and can be viewed by opening the `index.html` file 
 
 - When a new RFC is added or an existing RFC's status is updated, please update the RFC list in `docs/rfcs/README.md`.
 - When starting work on or changing the status of an RFC, update the RFC status in a dedicated commit.
+- Use GitButler for commit management instead of direct git commands when working on this project.

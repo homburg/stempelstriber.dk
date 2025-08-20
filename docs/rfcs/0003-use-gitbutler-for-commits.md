@@ -1,6 +1,6 @@
 # 3. Use GitButler for committing work
 
-- Status: Proposed
+- Status: In Progress
 - Deciders: Thomas H.
 - Date: 2025-08-20
 
