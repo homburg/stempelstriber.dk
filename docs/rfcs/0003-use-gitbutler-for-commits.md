@@ -20,3 +20,7 @@ GitButler is a tool that helps developers create small, logical commits. This wi
 
 1.  All contributors will be encouraged to use GitButler for their work.
 2.  A link to the GitButler documentation will be added to the `CONTRIBUTING.md` file.
+
+## Notes
+
+- Update Gemini rules to reflect the new workflow.
