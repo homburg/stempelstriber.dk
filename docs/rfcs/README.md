@@ -8,3 +8,4 @@ This directory contains RFCs (Requests for Comment) for the stempelstriber.dk pr
 | 2. Document automated workflows | Proposed |
 | 3. Use GitButler for committing work | Done |
 | 4. Create CONTRIBUTING.md file | Done |
+| 5. Switch to Next.js site | Proposed |
