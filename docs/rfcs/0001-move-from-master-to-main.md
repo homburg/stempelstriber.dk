@@ -1,6 +1,6 @@
 # 1. Move from master to main
 
-- Status: Proposed
+- Status: In Progress
 - Deciders: Thomas H.
 - Date: 2025-08-20
 
